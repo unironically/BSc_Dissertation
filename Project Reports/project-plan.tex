@@ -1,0 +1,178 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{pgfgantt}
+\usepackage{fancyhdr}
+
+\fancypagestyle{title}{
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\lhead{Luke Bessant - 2019}
+\rhead{}
+}
+
+\pagestyle{title}
+
+\title{\textbf{CS3821 Full Unit Project Plan}\\Computer Language Design and Engineering}
+
+\author{Luke Bessant\\Supervisor: Reuben Rowe}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{title}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Abstract}
+The tool developed during this project will be a compiler for a small subset of the Java language, compiling the high-level code into Java bytecode from which it can then be compiled into machine code for a given platform such as Linux. Thus this tool could play a useful and important part in a compiler toolchain for a company developing software with Java, who perhap need a bytecode compiler solely for the small subset of Java which this tool will handle. Therefore the tool which I will develop could be useful as a smaller and possibly faster and more efficient alternative bytecode compiler.
+\\
+\\
+The personal motivation of this project is primarily to further the prospects of my future career in computer science academia by improving my ability to carry out research of my own motivation and write programs based on knowledge gained from such research. Thus a high mark gained for work completed during this individual project will demonstrate to others, as well as myself, my ability to acquire knowledge, write reports on it and implement relevant programs, which will aid my future prospects in academia.
+\\
+\\
+I chose this particular subject for my project because of previous interest in the theoretical basis of computing, being interested in topics such as automata, regular expressions, languages and grammars, both from my personally motivated reading and previous courses within my degree. Therefore I wanted to carry out further research into similar theoretical aspects of computing, as well as gain the understanding of their implementation as compilers and interpreters.
+\\
+\\
+By completing this individual project I hope to achieve the aforementioned boost in my ability to carry out large portions of work by myself and see a project through from start to finish, as well as gain a much greater understanding of the theory behind and implementation of code compilation. The product constructed during this project and the reports of research used to build it will also serve as an example of this ability when I eventually look to begin my career in this field. Furthermore, carrying out an individual project on this subject will help me to confirm whether or not it is the subject I do want to forge a career in. Therefore the crux of my motivation towards this individual project centers around the reinforcement of future oppertunities in this field of study.
+
+\newpage
+
+\section{Project Timeline}
+This section contains the initial project timeline for both the first and second term of the academic year, listing the twelve weeks of each term as a unit of measurement for the reports and programs. Each of the report/program milestones included in the below gantt charts for this project are listed in the following two sections of this document.
+
+\subsection{Term 1}
+The gantt chart below shows the progress of the individual project split into weeks one through twelve for the first term of the academic year. \\
+
+\c{\begin{ganttchart}[
+	vgrid,
+	group/.append style={draw=black, fill=black!25},
+	milestone/.append style={shape=star}]{1}{12}
+\gantttitle{Term 1}{12} \\
+\gantttitlelist{1,...,12}{1}\\
+\ganttgroup{Reports}{3}{11} \\
+\ganttmilestone{Project Plan Submission (04/10/19)}{2} \\
+\ganttbar{Interpreters (18/10/19)}{3}{4} \\
+\ganttbar{Context-Free Grammars and BNF (18/10/19)}{3}{4} \\
+\ganttbar{Lexical Analysis (1/11/19)}{5}{6} \\
+\ganttbar{TD and LR Syntax Parsing (15/11/19)}{7}{8} \\
+\ganttbar{Java Compilation (29/11/19)}{9}{10} \\
+\ganttbar{Technical Report (6/12/19)}{11}{11} \\
+\ganttgroup{Programs}{4}{11} \\
+\ganttbar{BNF Pretty Printer (22/11/19)}{4}{9} \\
+\ganttbar{Calculator Interpreter (06/12/19)}{7}{11} \\
+\ganttmilestone{Interim Programs/Reports Submission (06/12/19)}{11} \\
+\ganttlink{elem3}{elem4}
+\ganttlink{elem4}{elem5}
+\ganttlink{elem5}{elem6}
+\ganttlink{elem6}{elem7}
+\end{ganttchart}}
+
+\newpage
+
+\subsection{Term 2}
+The gantt chart below shows the progress of the individual project split into weeks one through twelve for the second term of the academic year. \\
+
+\c{\begin{ganttchart}[
+	vgrid,
+	group/.append style={draw=black, fill=black!25},
+	milestone/.append style={shape=star}]{1}{12}
+\gantttitle{Term 2}{12} \\
+\gantttitlelist{1,...,12}{1}\\
+\ganttbar{Final Program (27/03/20)}{1}{10} \\
+\ganttmilestone{Final Report Draft (28/02/20)}{8} \\
+\ganttbar{Final Report (27/03/20)}{4}{12} \\
+\ganttmilestone{Final Programs/Report (27/03/20)}{12}
+\end{ganttchart}}
+
+\newpage
+
+\section{Reports}
+
+\subsection{Interpreters}
+The ability to understand how interpreters work, as well as compilers, will also strengthen my knowledge on lexing and parsing which will be of great benefit when writing the final compiler program. A report will therefore be written on the inner workings of interpreters as opposed to compilers, primarily detailing the steps involved in interpretation. This report will also help towards implementing the early deliverable of a simple calculator interpreter mentioned in the following section.
+
+\subsection{Context Free Grammars and Backus–Naur Form}
+The initial report will be on the theory and implementation of context free grammars. This report will explain the purpose, structure and specification of syntax by these grammars (primarily Backus–Naur form), and will note the methods of language parsing and generation derived from the use of context free grammars. The research put into this report will further my understanding of compiler theory and ability to implement syntax specification, parsing and generation techniques which will be used in the project product.
+
+\subsection{Lexical Analysis}
+Secondly, a report will be written on lexical analysis; the process of deriving sequences known as \textit{lexemes} from the stream of characters which make up the source program. Thus this report will highlight the role of lexical analysis and will detail the processes of specifying and recognising tokens within the source code. The purpose of this report is to build on my knowledge of context free grammars and begin to understand the practice of implementing specified grammars.
+
+\subsection{Top-Down and Left-Right Syntax Parsing}
+Furthermore a report will be written based on research on the use of both the top-down and left-right syntax parsing algorithms which may be used in the implementation of practical project deliverables as proof of concept. This report will detail the techniques used by these parsing algorithms to prioritise and associate language expressions. A report on this subject will strengthen my ability to write an efficient syntax parser for a future compiler product.
+
+\subsection{Java Compilation}
+Due to the final product of this project being written primarily using Java, it's necessary for me to write a report on the way in which Java code is compiled into machine code through use of both the \textit{javac} compiler and the Java virtual machine. This research will further my understanding of the process of compilation as a whole, and in particular that of Java, which the final product will be written in.
+
+\subsection{Technical Report on Practical Deliverables}
+This final report will be based on the implementation of the proof of concept programs described in the following section. This will include an explanation of the process through which each program was constructed and how they work, as well as any issues surrounding their implementation, followed by a bibliography with sources of information used to help me build the programs. This report will also go towards the making of the final project report towards the end of the academic year.
+
+\newpage
+
+\section{Proof Of Concept Programs}
+
+\subsection{Pretty Printer for BNF Specifications}
+The second proof of concept program will be to implement a \textit{pretty printer} for syntax specifications written in Backus–Naur form, which will have been researched in the first report mentioned in the reports section of this plan. This program will be useful as it gives me the opportunity to gain experience in the use of abstract syntax trees, both analysing and manipulating them, which will be useful in the development of the compiler too developed later in the project. to Also an interest of this proof of concept program is to demonstrate the ability of programs to access and process their own source code, and similarly to gain the understanding necessary to implement this ability within the final product.
+
+\subsection{Simple Calculator Interpreter}
+This program will consist of an intepreter for a simple four function calculator which will implement addition, subtraction, multiplication and division. Thus this program will be based on the knowledege of code interpretation gained whilst researching for and writing the report on interpreters mentioned in the reports section. The experience gained whilst writing this proof of concept program will be a great aid towards writing parsing code for the final product of the project.
+
+\newpage
+
+\section{Risk Assessment}
+
+\textbullet\space Scheduling Flaws\\
+Due to the conceiving of my own timetable for this project, shown by the gantt chart within the project timeline section, it is possible that I have set unrealistic completion dates for the reports or programs listed. Therefore the work to be done could grow as work overlaps and become too much to handle. The likelihood of this risk is high due to my personal inexperience in preparing timings and deadlines for a big project such as this.
+
+A mitigation for this risk would be to pay close attention to and journal the amount of work done every day, making sure that I'm not falling behind with respect to scheduling and keeping up a sustained consistent daily workflow. Secondly, advice from my supervisor would reveal any scheduling which seems too optimistic so that this can be resolved.
+\\
+\\
+\textbullet\space Lack of Testing \\
+The result of a lack of coherent testing of the tool both during and after its development, a bug-ridden half-functional program, is also a risk involved in the development of the compiler tool. Lack of thorough testing will lead to a tool too unreliable to deploy in a real setting and would render the tool useless. The likelihood of this happening is medium, as I have experience with the use of unit as well as black/white box testing, but may also neglect testing along the way.
+
+To mitigate this risk a strategy of thorough unit testing will be employed throughout the process of creating the project's programs. This means I will only move on from a software component when I'm confident that it does not contain any prominent bugs which could derail the program. The program will also go through system and acceptance testing once completed to identify any errors.
+\\
+\\
+\textbullet\space Changes in Java API \\
+Since the compiler is being written in Java, there is a risk of the APIs becoming deprecated and removed as new Java versions are released, therefore classes and methods used to write the program may not work in the future which will cause the tool to stop working. The risk of this however is relatively low.
+
+This risk cannot be avoided indefinitely, however we can decrease the likelihood of this happening can be reduced by using the core Java API for the vast majority of the code as will occur within this tool. Thereby using classes and methods which are not currently deprecated and therefore not at imminent risk of being removed from the Java API.
+
+\newpage
+
+\section{Bibliography}
+
+\textbullet\space  Aho, A. Lam, M. Sethi, R. Ullman, J. (2006). Compilers: Principles, Techniques, and Tools.
+\\
+\\
+This book serves as a general reference on all topics related to compilers, containing all of the background theory relevant for this individual project as well as examples of implementation of some of the techniques involved.
+\\
+\\
+
+\textbullet\space Grune, D.  Van Reeuwijk, K. Bal, H. Jacobs, C. Langendoen, K. (2012). Modern Compiler Design.
+\\
+\\
+Like the previous book this book also contains all of the necessary background information within compiler theory, covering content such as lexical and syntax analysis, thus this will serve as a secondary point of reference for use in writing the reports listed in the reports section.
+\\
+\\
+
+\textbullet\space Appel, A. Palsberg, J. (2002). Modern Compiler Implementation in Java.
+\\
+\\
+In addition to some of the background theory detailed in the previous, this book goes further into showing implementation of compiler modules using Java classes. This is particularly useful as the programs I will be writing for the project will also be in Java, therefore this book will give me a better understanding of how to write these programs properly.
+\\
+\\
+
+\textbullet\space Lindholm, T. Yellin, F. Bracha, G. Buckley, A. Smith, D. (2019). The Java Virtual Machine Specification.
+\\
+\textit{https://docs.oracle.com/javase/specs/jvms/se13/html/index.html}
+\\
+\\
+This source contains the specification for the Java virtual machine including the structure of the Java virtual machine and its instruction set, which will be useful when writing the report on Javac and the Java virtual machine. This will also give me a deeper understanding of how Java compilation works and so will help me to write a compiler in Java for a subset language similar to Java.
+
+\end{document}

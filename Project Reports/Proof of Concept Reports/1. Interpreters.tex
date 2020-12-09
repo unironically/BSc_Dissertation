@@ -1,0 +1,86 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage{pgfgantt}
+\usepackage{fancyhdr}
+
+\fancypagestyle{title}{
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\lhead{Luke Bessant - 2019}
+\rhead{}
+}
+\pagestyle{title}
+
+\title{\textbf{CS3821 Full Unit Project}\\On Computer Language Interpretation}
+\author{Luke Bessant\\Supervisor: Reuben Rowe}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{title}
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+One of the significant means of correctly executing a program written in some language is to employ an interpreter. Considering the importance of interpreters and the proposed implementation of a simple four function calculator for this project to prove the concepts of lexing, parsing and evaluation, the purpose of this report is to gain a better understanding of how interpreters work and thus help me to later construct one.
+
+\section{Interpreters}
+Simply put an interpreter is a program designed to execute code written in some language by taking the code file or stream as input, and produce the desired output of said code rather than an executable program. This is done by traversing the lines of code in the input program consecutively, processing each line individually and generating their outputs one-by-one, not taking into account the larger code block around it. Thus a given line is more or less independent from those around it, other than sharing access to the same stack frame when within the same procedure, thereby having access to the variables and data models made available to other lines of code of that procedure.
+
+Considering this procedure of running each line of a program one after the other, it can be derived that particular lines will be run more than once within certain programs. For instance the presence of a loop mandates that the code block within the loop will be run as many times as it takes until the loop terminates. This is a key inefficiency concerning interpreters and one of the reasons that interpretation is generally slower than compilation.
+
+Using an interpreted language, the \textit{executable} we use is the interpreter, which we pass the plaintext code as input. Therefore we have that a program written in an interpreted language is essentially cross-platform, providing that an implementation of the interpreter exists for each platform required, because all one needs to pass to it is the source code file to execute. In some circumstances this is also a disadvantage, for instance in cases where source code written needs to be kept confidential. However this can be solved by first translating the source code to an intermediate representation or byte code, which is then interpreted.
+
+Some examples of interpreted languages include Bash, VBScript and MATLAB. It's common that widely used languages will compile source code into an intermediate code or bytecode, which they then interpret. Languages fitting this description include Java and Python.
+
+\section{Stages of Interpretation}
+\subsection{Lexing and Parsing}
+This first step performing lexical analysis on the plaintext representation of the input code, written in the high level language supplied by the programmer and understood by the interpreter. The process of lexical analysis is to split the source code into a list of tokens, in other words, to \textit{tokenise} the code.
+
+This list of tokens is then passed to a parser, whose job it is to identify the desired structure of the code. This is performed using both the token stream and the context-free grammar specification for the given language. In simple terms, the structure of the code is determined by mapping an input stream of tokens to terminals specified within the context-free grammar of the language, and then building an abstract syntax tree representation of the code.
+
+\subsection{Evaluation}
+Following its generation the abstract syntax tree is passed to an evaluator in a structured list form, whose task is to process this list in such a way that the desired output result of the original code passed to the lexer is produced. This could be done by recursively evaluating each branch of a given tree node, perhaps the left side of the operand within a simple addition expression and then the right, and then evaluating the addition itself using the remaining left and right leaves.
+
+\section{Interpretation vs. Compilation}
+The processes of interpretation and compilation are structurally near-identical until the aforementioned evaluation stage after the generation of an abstract syntax tree. At this point, the interpreter goes on to directly evaluate the statements held within the tree and execute them to produce an immediate output. This makes interpreted programs easier to debug as we would be evaluating a particular line when an error occurs. Contrastingly a compiler will, from the AST, generate intermediate code in some low level language which is platform-independent, and then platform-dependent object code understood by the system being used. A good example of this would be the compilation process for C or C++. This intermediate code is subject to optimisation and then code generation, where it is translated into platform-dependent code such as Assembly. 
+
+We can infer from this that an interpreted program will usually begin execution more quickly than a compiled program (where no executable file yet exists), however due to the optimisation and code generation steps used by a compiler, the compiled program will generally be faster when running the executable file it generates. In addition, this executable will always be ready to run and will not have to be recompiled unless the source code file changes. Similarly an interpreted language requires the presence of an interpreter program to execute programs written using it, whereas only the executable file generated by the compiler is necessary so long as it is supported by the platform used.
+
+We also have that, since an interpreter relies on the presence of a plaintext source code file in its specified language, code written in an interpreted language will always have openly readable source code. Using a compiled program however, one only needs the executable file generated through compilation in order to run the program, providing that the platform is able to run the given executable. Therefore we are able to keep the source code private when using a compiled language, which is no doubt useful for certain organisations.
+
+\section{Examples of Interpreted Languages}
+
+\newpage
+\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{9}
+
+\bibitem{Evans} 
+Evans, D.
+[\textit{Introduction to Computing: Explorations in Language, Logic, and Machines} - Section 11]. 
+2011.
+
+\bibitem{Nystrom} 
+Nystrom, R.
+[\textit{Crafting Interpreters} - Section 5]. 
+2011.
+
+\texttt{https://www.craftinginterpreters.com/}
+
+\bibitem{Tchirou} 
+Tchirou, F.
+[\textit{Compilers and Interpreters}]. 
+2017.
+
+\bibitem{Olson} 
+Olson, P.
+[\textit{Compilers and Interpreters}]. 
+2014.
+
+\texttt{https://www.codeproject.com/Articles/345888/How-to-Write-a-Simple-Interpreter-in-JavaScript}
+
+\end{thebibliography}
+
+\end{document}
